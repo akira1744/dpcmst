@@ -25,7 +25,7 @@ source('/home/rstudio/srv/function/index.R')
 clean_vars()
 
 # 年度の設定
-set_dpcfy <- 2018
+set_dpcfy <- 2024
 
 # データベースのpath
 db_dpc <- 'output/dpcmst.sqlite'
