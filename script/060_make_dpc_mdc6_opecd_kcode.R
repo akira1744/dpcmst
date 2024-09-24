@@ -70,14 +70,14 @@ dpc_mdc10 <- dpc_mdc10 %>%
 
 # 手術1_点数表名称～手術5_Kコードまでを+で結合してkname と　kcodeを作成する。
 dpc_mdc10 <- dpc_mdc10 %>% 
-  mutate(kname = str_c(手術1_点数表名称,手術2_点数表名称,手術3_点数表名称,手術4_点数表名称,手術5_点数表名称,sep = '+'),
-         kcode = str_c(手術1_Kコード,手術2_Kコード,手術3_Kコード,手術4_Kコード,手術5_Kコード,sep = '+')) %>% 
+  mutate(kname = str_c(手術1_点数表名称,手術2_点数表名称,手術3_点数表名称,手術4_点数表名称,手術5_点数表名称,sep = '＋'),
+         kcode = str_c(手術1_Kコード,手術2_Kコード,手術3_Kコード,手術4_Kコード,手術5_Kコード,sep = '＋')) %>% 
   glimpse()
 
-# ++++$のように+で終わっているものは+を削除
+# ＋で終わっているものは+を削除
 dpc_mdc10 <- dpc_mdc10 %>% 
-  mutate(kname = str_remove(kname,'\\++$'),
-         kcode = str_remove(kcode,'\\++$')) %>% 
+  mutate(kname = str_remove(kname,'[＋]*$'),
+         kcode = str_remove(kcode,'[＋]*$')) %>% 
   glimpse()
 
 # stymdからyear,monthを作成
@@ -107,3 +107,8 @@ dbWriteTable(con_dpc,'dpc_opecdkname',dpc_opecdkname,overwrite = T)
 
 # con_dpcのtable一覧を確認
 dbListTables(con_dpc) %>% print()
+
+# 確認
+
+tbl(con_dpc,'dpc_opecdkname')
+

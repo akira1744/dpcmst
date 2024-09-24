@@ -105,6 +105,30 @@ dpc_mdc14 <- dpc_mdc14 %>%
   select(-番号,-更新日,-有効期間_終了日,-year,-month,-stymd,-変更区分) %>% 
   glimpse()
 
+# 包括フラグを結合
+dpcmst_henkan_table <- tbl(con_dpc,'dpcmst_henkan_table') %>%
+  select(
+    mdc14cd=診断群分類番号
+    ,包括フラグ = 包括フラグ包括対象は1_包括対象外は0
+    ,有効期間_開始日) %>% 
+  collect() %>%
+  glimpse()
+
+dpcmst_henkan_table <- dpcmst_henkan_table %>% 
+  mutate(dpcfy = str_sub(有効期間_開始日,1,4)) %>% 
+  mutate(dpcfy=as.integer(dpcfy))
+
+dpcmst_henkan_table %>% 
+  count(dpcfy)
+
+dpcmst_henkan_table <- dpcmst_henkan_table %>% 
+  distinct(dpcfy,mdc14cd,.keep_all=T) %>% 
+  select(dpcfy,mdc14cd,包括フラグ)
+
+dpc_mdc14 <- dpc_mdc14 %>% 
+  left_join(dpcmst_henkan_table,by=c('dpcfy','mdc14cd')) %>% 
+  glimpse()
+
 # 書き込み
 dbWriteTable(con_dpc, 'dpc_mdc14', dpc_mdc14, overwrite = TRUE)
 

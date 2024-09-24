@@ -35,7 +35,7 @@ filepath <- 'input/診断群分類_DPC_電子点数表_20211124.xlsx'
 fy <- '2020'
 filepath <- 'input/診断群分類_DPC_電子点数表_20231121.xlsx'
 fy <- '2022'
-filepath <- 'input/診断群分類_DPC_電子点数表_20240321.xlsx'
+filepath <- 'input/診断群分類_DPC_電子点数表_20240814.xlsx'
 fy <- '2024'
 
 ################################################################################
@@ -45,6 +45,10 @@ outputdir <- str_c('output/tmp/',fy,'/')
 
 # outputdirがなかったら作成する
 if(!dir.exists(outputdir)){
+  dir.create(outputdir,recursive = T)
+}else{
+  # すでに存在していたら中身を削除
+  unlink(outputdir,recursive = T)
   dir.create(outputdir,recursive = T)
 }
 
@@ -189,7 +193,7 @@ df<- readxl::read_excel(filepath,
 
 # rds保存
 df %>% 
-  saveRDS(str_c(outputdir,'dpcmst_ope_syoti1.rds'))
+  saveRDS(str_c(outputdir,'dpcmst_syoti1.rds'))
 
 ################################################################################
 
@@ -212,7 +216,7 @@ df <- readxl::read_excel(filepath,
 
 # rds保存
 df %>% 
-  saveRDS(str_c(outputdir,'dpcmst_ope_syoti2.rds'))
+  saveRDS(str_c(outputdir,'dpcmst_syoti2.rds'))
 
 ################################################################################
 
@@ -295,3 +299,4 @@ df %>%
   saveRDS(str_c(outputdir,'dpcmst_henkan_table.rds'))
 
 ################################################################################
+

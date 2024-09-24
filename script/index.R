@@ -17,6 +17,12 @@ source("script/050_make_dpc_mdc14_dpc_opecdopekb.R")
 # dpc_opecdknameを作成
 source("script/060_make_dpc_mdc6_opecd_kcode.R")
 
+# dpc_opecdknameを作成
+source("script/061_make_dpc_syoti1.R")
+
+# dpc_opecdknameを作成
+source("script/062_make_dpc_syoti2.R")
+
 # dpc_mdc6icdを作成
 source("script/070_make_dpc_mdc6icd.R")
 

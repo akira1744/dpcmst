@@ -23,7 +23,6 @@ source('/home/rstudio/srv/function/index.R')
 # function以外の変数を削除
 clean_vars()
 
-
 ################################################################################
 
 # データベースのpath
@@ -111,3 +110,4 @@ dpc_mdc6 <- dpc_mdc6 %>%
 dbWriteTable(con_dpc, 'dpc_mdc6', dpc_mdc6, overwrite = TRUE,row_names = FALSE)
 
 ################################################################################
+
