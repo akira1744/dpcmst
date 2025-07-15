@@ -29,19 +29,19 @@ clean_vars()
 filename <- list.files('input/',pattern = '.xlsx$',full.names = T) %>% print()
 
 # setting
-filepath <- 'input/診断群分類_DPC_電子点数表_20190522.xlsx'
-fy <- '2018'
-filepath <- 'input/診断群分類_DPC_電子点数表_20211124.xlsx'
-fy <- '2020'
-filepath <- 'input/診断群分類_DPC_電子点数表_20231121.xlsx'
-fy <- '2022'
-filepath <- 'input/診断群分類_DPC_電子点数表_20240814.xlsx'
+# filepath <- 'input/診断群分類_DPC_電子点数表_20190522.xlsx'
+# fy <- '2018'
+# filepath <- 'input/診断群分類_DPC_電子点数表_20211124.xlsx'
+# fy <- '2020'
+# filepath <- 'input/診断群分類_DPC_電子点数表_20231121.xlsx'
+# fy <- '2022'
+filepath <- 'input/診断群分類_DPC_電子点数表_20250520.xlsx'
 fy <- '2024'
 
 ################################################################################
 
 # outputdirの設定
-outputdir <- str_c('output/tmp/',fy,'/')
+outputdir <- str_c('output/tmp/',fy,'/') %>% print()
 
 # outputdirがなかったら作成する
 if(!dir.exists(outputdir)){

@@ -109,8 +109,6 @@ tmp <- dpc_mdc6icd %>%
 out2 <- out1 %>% 
   left_join(tmp,by=c('DPC年度'='dpcfy','副傷病MDC6'='mdc6cd'))
 
-
-
 outputpath <- str_c('output/DPC副傷病一覧_',set_dpcfy,'年度.xlsx') %>% print()
 
 # Excel出力

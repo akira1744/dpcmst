@@ -29,6 +29,10 @@ source("script/070_make_dpc_mdc6icd.R")
 # dpc_mdc6hukuを作成
 source("script/080_make_dpc_mdc6huku.R")
 
+source("script/090_make_dpc_mdc11_henkan_table.R")
+
+source("script/091_compare_dpc_kikan2.R")
+
 # 副傷病一覧.xlsxの出力
 # set_dpcfy を書き換えればその年の副傷病一覧が出力可能
-source("script/090_副傷病一覧の出力.R")
+source("script/100_副傷病一覧の出力.R")
